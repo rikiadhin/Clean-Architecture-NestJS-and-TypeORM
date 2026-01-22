@@ -1,11 +1,11 @@
-import { DataSourceOptions } from 'typeorm';
 import * as dotenv from 'dotenv';
+import { DataSource } from 'typeorm';
 
 if (process.env.NODE_ENV === 'local') {
   dotenv.config({ path: './env/local.env' });
 }
 
-const config: DataSourceOptions = {
+export default new DataSource ({
   type: 'postgres',
   host: process.env.DATABASE_HOST,
   port: parseInt(process.env.DATABASE_PORT),
@@ -21,8 +21,4 @@ const config: DataSourceOptions = {
   // ssl: {
   //   rejectUnauthorized: false,
   // },
-};
-
-console.log(config);
-
-export default config;
+}); 

@@ -2,7 +2,7 @@ import { CallHandler, ExecutionContext, Injectable, NestInterceptor } from '@nes
 import { FastifyRequest } from 'fastify';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
-import { LoggerService } from '../../logger/logger.service';
+import { LoggerService } from '@infra/logger/logger.service';
 
 @Injectable()
 export class LoggingInterceptor implements NestInterceptor {

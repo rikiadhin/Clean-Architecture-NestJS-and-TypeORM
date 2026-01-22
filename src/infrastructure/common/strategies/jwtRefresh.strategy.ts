@@ -1,14 +1,14 @@
+import { Request } from 'express';
+import { TokenPayload } from '@domain/model/auth';
 import { ExtractJwt, Strategy } from 'passport-jwt';
 import { PassportStrategy } from '@nestjs/passport';
 import { Inject, Injectable } from '@nestjs/common';
-import { Request } from 'express';
-import { EnvironmentConfigService } from '../../config/environment-config/environment-config.service';
-import { UsecasesProxyModule } from '../../usecases-proxy/usecases-proxy.module';
-import { UseCaseProxy } from '../../usecases-proxy/usecases-proxy';
-import { LoginUseCases } from '../../../usecases/auth/login.usecases';
-import { TokenPayload } from '../../../domain/model/auth';
-import { LoggerService } from '../../logger/logger.service';
-import { ExceptionsService } from '../../exceptions/exceptions.service';
+import { LoggerService } from '@infra/logger/logger.service';
+import { LoginUseCases } from '@usecases/auth/login.usecases';
+import { UseCaseProxy } from '@infra/usecases-proxy/usecases-proxy';
+import { ExceptionsService } from '@infra/exceptions/exceptions.service';
+import { UsecasesProxyModule } from '@infra/usecases-proxy/usecases-proxy.module';
+import { EnvironmentConfigService } from '@infra/config/environment-config/environment-config.service';
 
 @Injectable()
 export class JwtRefreshTokenStrategy extends PassportStrategy(Strategy, 'jwt-refresh-token') {

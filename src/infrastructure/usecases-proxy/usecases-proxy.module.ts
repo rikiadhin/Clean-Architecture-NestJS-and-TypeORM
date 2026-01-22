@@ -1,28 +1,28 @@
 import { DynamicModule, Module } from '@nestjs/common';
-import { addTodoUseCases } from '../../usecases/todo/addTodo.usecases';
-import { deleteTodoUseCases } from '../../usecases/todo/deleteTodo.usecases';
-import { GetTodoUseCases } from '../../usecases/todo/getTodo.usecases';
-import { getTodosUseCases } from '../../usecases/todo/getTodos.usecases';
-import { updateTodoUseCases } from '../../usecases/todo/updateTodo.usecases';
-import { IsAuthenticatedUseCases } from '../../usecases/auth/isAuthenticated.usecases';
-import { LoginUseCases } from '../../usecases/auth/login.usecases';
-import { LogoutUseCases } from '../../usecases/auth/logout.usecases';
+import { addTodoUseCases } from '@usecases/todo/addTodo.usecases';
+import { deleteTodoUseCases } from '@usecases/todo/deleteTodo.usecases';
+import { GetTodoUseCases } from '@usecases/todo/getTodo.usecases';
+import { getTodosUseCases } from '@usecases/todo/getTodos.usecases';
+import { updateTodoUseCases } from '@usecases/todo/updateTodo.usecases';
+import { IsAuthenticatedUseCases } from '@usecases/auth/isAuthenticated.usecases';
+import { LoginUseCases } from '@usecases/auth/login.usecases';
+import { LogoutUseCases } from '@usecases/auth/logout.usecases';
 
-import { ExceptionsModule } from '../exceptions/exceptions.module';
-import { LoggerModule } from '../logger/logger.module';
-import { LoggerService } from '../logger/logger.service';
+import { ExceptionsModule } from '@infra/exceptions/exceptions.module';
+import { LoggerModule } from '@infra/logger/logger.module';
+import { LoggerService } from '@infra/logger/logger.service';
 
-import { BcryptModule } from '../services/bcrypt/bcrypt.module';
-import { BcryptService } from '../services/bcrypt/bcrypt.service';
-import { JwtModule } from '../services/jwt/jwt.module';
-import { JwtTokenService } from '../services/jwt/jwt.service';
-import { RepositoriesModule } from '../repositories/repositories.module';
+import { BcryptModule } from '@infra/services/bcrypt/bcrypt.module';
+import { BcryptService } from '@infra/services/bcrypt/bcrypt.service';
+import { JwtModule } from '@infra/services/jwt/jwt.module';
+import { JwtTokenService } from '@infra/services/jwt/jwt.service';
+import { RepositoriesModule } from '@infra/repositories/repositories.module';
 
-import { DatabaseTodoRepository } from '../repositories/todo.repository';
-import { DatabaseUserRepository } from '../repositories/user.repository';
+import { DatabaseTodoRepository } from '@infra/repositories/todo.repository';
+import { DatabaseUserRepository } from '@infra/repositories/user.repository';
 
-import { EnvironmentConfigModule } from '../config/environment-config/environment-config.module';
-import { EnvironmentConfigService } from '../config/environment-config/environment-config.service';
+import { EnvironmentConfigModule } from '@infra/config/environment-config/environment-config.module';
+import { EnvironmentConfigService } from '@infra/config/environment-config/environment-config.service';
 import { UseCaseProxy } from './usecases-proxy';
 
 @Module({

@@ -26,7 +26,7 @@ export class ResponseInterceptor<T> implements NestInterceptor<T, ResponseFormat
 
     return next.handle().pipe(
       map((data) => ({
-        data,
+        data,   
         isArray: Array.isArray(data),
         path: request.url,
         duration: `${Date.now() - now}ms`,

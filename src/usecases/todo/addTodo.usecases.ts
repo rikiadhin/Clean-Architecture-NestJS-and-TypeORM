@@ -1,6 +1,6 @@
-import { ILogger } from '../../domain/logger/logger.interface';
-import { TodoM } from '../../domain/model/todo';
-import { TodoRepository } from '../../domain/repositories/todoRepository.interface';
+import { ILogger } from '@domain/logger/logger.interface';
+import { TodoM } from '@domain/model/todo';
+import { TodoRepository } from '@domain/repositories/todoRepository.interface';
 
 export class addTodoUseCases {
   constructor(private readonly logger: ILogger, private readonly todoRepository: TodoRepository) {}

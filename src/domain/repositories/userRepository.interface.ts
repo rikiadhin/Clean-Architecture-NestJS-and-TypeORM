@@ -1,4 +1,4 @@
-import { UserM } from '../model/user';
+import { UserM } from '@domain/model/user';
 
 export interface UserRepository {
   getUserByUsername(username: string): Promise<UserM>;

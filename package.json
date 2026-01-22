@@ -13,7 +13,7 @@
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
-    "start:dev": "NODE_ENV=local nest start --watch",
+    "start:dev": "cross-env NODE_ENV=local nest start --watch",
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/main",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
@@ -22,11 +22,11 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./jest-e2e.json --coverage",
-    "typeorm:win": "NODE_ENV=local ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js --config src/infrastructure/config/typeorm/typeorm.config.ts",
-    "typeorm:generate:win": "npm run typeorm:win migration:generate -- -n",
-    "typeorm:create:win": "npm run typeorm:win migration:create -n",
-    "typeorm:run:win": "npm run typeorm:win migration:run",
-    "typeorm:revert:win": "npm run typeorm:win migration:revert"
+    "typeorm": "cross-env NODE_ENV=local ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js",
+    "migration:generate": "npm run typeorm -- migration:generate src/infrastructure/database/migrations/init -d src/infrastructure/config/typeorm/typeorm.config.ts",
+    "migration:create": "npm run typeorm -- migration:create src/infrastructure/database/migrations/custom",
+    "migration:run": "npm run typeorm -- migration:run -d src/infrastructure/config/typeorm/typeorm.config.ts",
+    "migration:revert": "npm run typeorm -- migration:revert -d src/infrastructure/config/typeorm/typeorm.config.ts"
   },
   "dependencies": {
     "@fastify/cookie": "^9.4.0",
@@ -66,6 +66,7 @@
     "@types/supertest": "^6.0.0",
     "@typescript-eslint/eslint-plugin": "^8.0.0",
     "@typescript-eslint/parser": "^8.0.0",
+    "cross-env": "^10.1.0",
     "eslint": "^8.42.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-prettier": "^5.0.0",
